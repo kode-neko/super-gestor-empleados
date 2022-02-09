@@ -1,5 +1,3 @@
-import React from "react";
-
 const IdCard = (props) => {
   const {user} = props;
   return (
