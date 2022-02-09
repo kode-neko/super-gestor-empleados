@@ -8,6 +8,13 @@
   border-radius: 2px;
   color: white;
   box-shadow: 2px 2px 4px silver;
+
+  transition: transform 0.3s;
+}
+
+.idCard:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
 }
 
 .idCard .avatar {
@@ -32,21 +39,21 @@
 }
 
 .idCard .info ul li {
-    font-size: 18px;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
+  font-size: 18px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
 }
 
-.idCard .info .name{
-    font-size: 32px;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 10px;
+.idCard .info .name {
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
 }
 
-.idCard .info .icon{
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+.idCard .info .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
 }
