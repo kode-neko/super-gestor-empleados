@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+      crossorigin
+    ></script>
+    <script type="text/babel">
+      const CardId = (props) => {
+        const {user} = props;
+        return (
+          <div id="userList">
+            <div class="idCard">
+              <img class="avatar" src={user.avatar} />
+              <div class="info">
+                <h3 class="name">{user.name}</h3>
+                <ul>
+                  <li>{user.mail}</li>
+                  <li>{user.phone}</li>
+                  <li>
+                    {user.city} ({user.state})
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      window.addEventListener("load", () => {
+        const user = {
+          avatar: "man.png",
+          name: "Perico",
+          surname: "De los Palotes",
+          mail: "perico@gmail.com",
+          phone: 600212376,
+          city: "Torrevieja",
+          state: "Alicante",
+        };
+        ReactDOM.render(<CardId user={user} />, document.getElementById("app"));
+      });
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app" />
+  </body>
+</html>
