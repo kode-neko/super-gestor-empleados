@@ -1,11 +1,19 @@
-import './App.css';
-import IdCard from './idcard';
+import "./App.css";
+import IdCard from "./idcard";
 
 function App() {
 
+  const user = {
+    avatar: 'man.png',
+    name: 'Perico',
+    surname: 'De los Palotes',
+    city: 'Torrevieja',
+    state: 'Alicante'
+  }
+
   return (
     <div className="App">
-      <IdCard />
+      <IdCard user={user} />
     </div>
   );
 }

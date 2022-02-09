@@ -1,14 +1,15 @@
 import React from "react";
 
-const IdCard = () => {
+const IdCard = (props) => {
+  const {user} = props;
   return (
     <div>
       <div>
-        <img src="man.png" />
+        <img src={user.avatar} alt="user avatar"/>
         <ul>
-            <li>Perico de los Palotes</li>
-            <li>Torrevieja</li>
-            <li>Alicante</li>
+            <li>{user.name} {user.surname}</li>
+            <li>{user.city}</li>
+            <li>{user.state}</li>
         </ul>
       </div>
     </div>
