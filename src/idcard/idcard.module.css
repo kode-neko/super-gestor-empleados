@@ -7,13 +7,14 @@
   background-color: dodgerblue;
   border-radius: 2px;
   color: white;
-  box-shadow: 2px 2px 4px silver;
+  box-shadow: 4px 4px 4px silver;
 
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .idCard:hover {
-  transform: translateY(-10px);
+  transform: translate(6px, -6px);
+  background-color: royalblue;
   cursor: pointer;
 }
 
@@ -22,7 +23,7 @@
   width: 128px;
   border-radius: 50%;
   border-color: lightskyblue;
-  border-width: 10px;
+  border-width: 8px;
   border-style: solid;
 }
 
