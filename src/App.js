@@ -3,28 +3,32 @@ import { useEffect, useState } from "react";
 import IdCard from "./idcard";
 
 function App() {
-  const [user, setUser] = useState(undefined);
+  const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    fetch("https://randomuser.me/api/")
-    .then((data) => data.json())
-    .then((json) => {
-      const user = json.results[0];
-      setUser({
-        avatar: user.picture.medium,
-        name: user.name.first,
-        surname: user.name.last,
-        city: user.location.city,
-        state: user.location.state,
+    fetch("https://randomuser.me/api/?results=10")
+      .then((data) => data.json())
+      .then((json) => {
+        const userListAux = json.results.map((user) => ({
+          avatar: user.picture.large,
+          name: user.name.first,
+          surname: user.name.last,
+          city: user.location.city,
+          state: user.location.state,
+        }));
+        setUserList(userListAux);
       });
-    });
-  }, [])
+  }, []);
 
-  return user ? (
-    <div className="App">
-      <IdCard user={user} />
+  return userList.length !== 0 ? (
+    <div className="userList">
+      {userList.map((user) => (
+        <IdCard user={user} />
+      ))}
     </div>
-  ) : <img src="spinner.gif" alt="loading info" />;
+  ) : (
+    <img src="spinner.gif" alt="loading info" />
+  );
 }
 
 export default App;
