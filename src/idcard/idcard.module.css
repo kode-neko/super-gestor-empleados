@@ -1,0 +1,52 @@
+.idCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin: 40px;
+  padding: 20px;
+  background-color: dodgerblue;
+  border-radius: 2px;
+  color: white;
+  box-shadow: 2px 2px 4px silver;
+}
+
+.idCard .avatar {
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
+  border-color: lightskyblue;
+  border-width: 10px;
+  border-style: solid;
+}
+
+.idCard .idInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.idCard .info ul,
+.idCard .info ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.idCard .info ul li {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.idCard .info .name{
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.idCard .info .icon{
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}

@@ -13,6 +13,8 @@ function App() {
           avatar: user.picture.large,
           name: user.name.first,
           surname: user.name.last,
+          email: user.email,
+          phone: user.phone,
           city: user.location.city,
           state: user.location.state,
         }));

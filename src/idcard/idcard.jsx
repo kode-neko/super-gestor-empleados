@@ -1,14 +1,29 @@
+import styles from "./idcard.module.css";
+
 const IdCard = (props) => {
   const { user } = props;
   return (
-    <div>
-      <img src={user.avatar} alt="user avatar" />
-      <ul>
-        <li>
+    <div className={styles.idCard}>
+      <img className={styles.avatar} src={user.avatar} alt="user avatar" />
+      <div className={styles.info}>
+        <h3 className={styles.name}>
           {user.name} {user.surname}
-        </li>
-        <li>🏠 {user.city} - ({user.state})</li>
-      </ul>
+        </h3>
+        <ul>
+          <li className={styles.location}>
+            <img className={styles.icon} src="mail.png" alt="mail" />{" "}
+            {user.email}
+          </li>
+          <li className={styles.phone}>
+            <img className={styles.icon} src="phone.png" alt="phone" />{" "}
+            {user.phone}
+          </li>
+          <li className={styles.location}>
+            <img className={styles.icon} src="location.png" alt="location" />{" "}
+            {user.city} ({user.state})
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
