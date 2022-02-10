@@ -18,8 +18,30 @@
     padding: 0;
 }
 
-.counter{
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.right .add {
+    background-color: tomato;
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 4px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+}
+
+.right .add:hover {
+    background-color: orangered;
+}
+
+.right .counter{
     display: flex;
     align-items: center;
     font-size: 18px;
+    margin-right: 20px;
 }
