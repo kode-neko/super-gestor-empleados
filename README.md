@@ -1,4 +1,5 @@
-# React
+
+# Iniciación a React
 
 ¡Bienvenidos al repo del curso de Iniciación a React! Aquí se iran colgando los distintos materiales para completarlo.
 
@@ -22,13 +23,9 @@ Necesario instalar las siguientes herramientas:
   nvm ls
   nvm install 16.14.0
   nvm alias default 16.14.0
+  nvm use default
   nodejs -v && npm -v
-  npm install -g yarn
-  yarn -v
-  yarn add global create-react-app
-  yarn create react-app test
   ``` 
-
 
   <del>Nos decargamos el `tar.xz de la web`</del>
 
@@ -48,6 +45,9 @@ Una vez que tengamos el setup inicial instalamos estos 2 paquetes
 
 ```
 npm install -g yarn
-yarn add install global create-react-app
+yarn -v
+yarn add global create-react-app
+yarn create react-app test
+yarn start
 ```
 
