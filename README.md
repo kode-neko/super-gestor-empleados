@@ -30,13 +30,13 @@ Necesario instalar las siguientes herramientas:
   ``` 
 
 
-  <del>Nos decargamos el `tar.xz de la web`
+  <del>Nos decargamos el `tar.xz de la web`</del>
 
   ```
   tar xf node-v16.14.0-linux-x64.tar.xz
   ```
 
-  En estaguía se explica paso a paso como copiar los bianrios a su lugar correspondiente https://github.com/nodejs/help/wiki/Installation
+  <del>En estaguía se explica paso a paso como copiar los bianrios a su lugar correspondiente https://github.com/nodejs/help/wiki/Installation
   Si lo tenemos instalado y hay problemas con las versiones, en este [tutorial](https://medium.com/@martinmuelas/usando-node-js-con-nvm-516062f4dcdb) podemos ver como manejar el `nvm`. Es una aplicación para gestionar versiones de node.</del>
 
 - **NPM (v8.4.1)**: La instalación de node incluye este gestor de paquetes. Si queremos tener otra versión distinta escribamos `npm install npm@latest -g`
