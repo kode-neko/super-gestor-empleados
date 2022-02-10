@@ -25,7 +25,7 @@ function App() {
 
   return userList.length !== 0 ? (
     <>
-      <MainBar />
+      <MainBar total={userList.length} contratado={userList.length} />
       <div className="userList">
         {userList.map((user) => (
           <IdCard user={user} />
