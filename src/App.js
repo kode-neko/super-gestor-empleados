@@ -18,6 +18,7 @@ function App() {
           phone: user.phone,
           city: user.location.city,
           state: user.location.state,
+          contratado: false,
         }));
         setUserList(userListAux);
       });
@@ -28,7 +29,17 @@ function App() {
       <MainBar total={userList.length} contratado={userList.length} />
       <div className="userList">
         {userList.map((user) => (
-          <IdCard user={user} />
+          <IdCard
+            user={user}
+            onClickContratado={(email) => {
+              const newList = userList.map((user) =>
+                user.email === email
+                  ? { ...user, contratado: !user.contratado }
+                  : user
+              );
+              setUserList(newList);
+            }}
+          />
         ))}
       </div>
     </>

@@ -1,7 +1,7 @@
 import styles from "./idcard.module.css";
 
 const IdCard = (props) => {
-  const { user } = props;
+  const { user, onClickContratado } = props;
   return (
     <div className={styles.idCard}>
       <img className={styles.avatar} src={user.avatar} alt="user avatar" />
@@ -24,7 +24,12 @@ const IdCard = (props) => {
           </li>
         </ul>
         <div className={styles.actions}>
-          <button className={styles.btn} onClick={() => console.log('Contratado')}>Contratar</button>
+          <button
+            className={styles.btn}
+            onClick={() => onClickContratado(user.email)}
+          >
+            {user.contratado ? "Despedir" : "Contratar"}
+          </button>
         </div>
       </div>
     </div>
