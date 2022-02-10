@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import IdCard from "./idcard";
+import MainBar from "./mainbar";
 
 function App() {
   const [userList, setUserList] = useState([]);
@@ -23,11 +24,14 @@ function App() {
   }, []);
 
   return userList.length !== 0 ? (
-    <div className="userList">
-      {userList.map((user) => (
-        <IdCard user={user} />
-      ))}
-    </div>
+    <>
+      <MainBar />
+      <div className="userList">
+        {userList.map((user) => (
+          <IdCard user={user} />
+        ))}
+      </div>
+    </>
   ) : (
     <img src="spinner.gif" alt="loading info" />
   );
