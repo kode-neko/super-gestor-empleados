@@ -1,7 +1,9 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import IdCard from "./idcard";
 import MainBar from "./mainbar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AddEmployee from "./addemployee";
 
 function App() {
   const [userList, setUserList] = useState([]);
@@ -24,12 +26,8 @@ function App() {
       });
   }, []);
 
-  return userList.length !== 0 ? (
-    <>
-      <MainBar
-        total={userList.length}
-        contratado={userList.filter((user) => user.contratado).length}
-      />
+  const userListTpl =
+    userList.length !== 0 ? (
       <div className="userList">
         {userList.map((user) => (
           <IdCard
@@ -45,9 +43,24 @@ function App() {
           />
         ))}
       </div>
+    ) : (
+      <img src="spinner.gif" alt="loading info" />
+    );
+
+  return (
+    <>
+      <Router>
+        <MainBar
+          total={userList.length}
+          contratado={userList.filter((user) => user.contratado).length}
+        />
+        <div style={{ height: "100px" }}></div>
+        <Routes>
+          <Route exact path="/" element={userListTpl} />
+          <Route exact path="/add" element={<AddEmployee />} />
+        </Routes>
+      </Router>
     </>
-  ) : (
-    <img src="spinner.gif" alt="loading info" />
   );
 }
 

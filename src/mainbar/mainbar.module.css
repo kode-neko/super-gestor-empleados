@@ -24,6 +24,8 @@
 }
 
 .right .add {
+    display: inline-block;
+    text-decoration: none;
     background-color: tomato;
     color: white;
     border: none;

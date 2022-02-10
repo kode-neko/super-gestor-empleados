@@ -1,4 +1,5 @@
 import styles from "./mainbar.module.css";
+import { Link } from "react-router-dom";
 
 const MainBar = ({ total, contratado }) => {
   return (
@@ -8,7 +9,11 @@ const MainBar = ({ total, contratado }) => {
         <div className={styles.counter}>
           contratados {contratado}/{total}
         </div>
-        <button className={styles.add}>Añadir empleado</button>
+        <Link to="/add">
+          <div className={styles.add}>
+            Añadir Empleado
+          </div>
+        </Link>
       </div>
     </div>
   );
