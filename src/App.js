@@ -28,39 +28,36 @@ function App() {
 
   const userListTpl =
     userList.length !== 0 ? (
-      <div className="userList">
-        {userList.map((user) => (
-          <IdCard
-            user={user}
-            onClickContratado={(email) => {
-              const newList = userList.map((user) =>
-                user.email === email
-                  ? { ...user, contratado: !user.contratado }
-                  : user
-              );
-              setUserList(newList);
-            }}
-          />
-        ))}
-      </div>
+      userList.map((user) => (
+        <IdCard
+          user={user}
+          onClickContratado={(email) => {
+            const newList = userList.map((user) =>
+              user.email === email
+                ? { ...user, contratado: !user.contratado }
+                : user
+            );
+            setUserList(newList);
+          }}
+        />
+      ))
     ) : (
       <img src="spinner.gif" alt="loading info" />
     );
 
   return (
-    <>
-      <Router>
-        <MainBar
-          total={userList.length}
-          contratado={userList.filter((user) => user.contratado).length}
-        />
-        <div style={{ height: "100px" }}></div>
+    <Router>
+      <MainBar
+        total={userList.length}
+        contratado={userList.filter((user) => user.contratado).length}
+      />
+      <div className="userList">
         <Routes>
           <Route exact path="/" element={userListTpl} />
           <Route exact path="/add" element={<AddEmployee />} />
         </Routes>
-      </Router>
-    </>
+      </div>
+    </Router>
   );
 }
 
