@@ -26,7 +26,10 @@ function App() {
 
   return userList.length !== 0 ? (
     <>
-      <MainBar total={userList.length} contratado={userList.length} />
+      <MainBar
+        total={userList.length}
+        contratado={userList.filter((user) => user.contratado).length}
+      />
       <div className="userList">
         {userList.map((user) => (
           <IdCard
