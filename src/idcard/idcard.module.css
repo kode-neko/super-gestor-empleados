@@ -9,13 +9,13 @@
   color: white;
   box-shadow: 4px 4px 4px silver;
 
-  transition: transform 0.3s, background-color 0.3s;
+  transition: transform 0.3s;
 }
 
 .idCard:hover {
   transform: translate(6px, -6px);
-  background-color: royalblue;
-  cursor: pointer;
+  /* background-color: royalblue; */
+  /* cursor: pointer; */
 }
 
 .idCard .avatar {
@@ -27,9 +27,10 @@
   border-style: solid;
 }
 
-.idCard .idInfo {
+.idCard .info {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .idCard .info ul,
@@ -57,4 +58,25 @@
   width: 24px;
   height: 24px;
   margin-right: 10px;
+}
+
+.idCard .actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.idCard .actions .btn {
+  border: none;
+  background-color: royalblue;
+  color: white;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  font-size: 16px;
+  transition: background-color 0.5s;
+  border-radius: 2px;
+}
+
+.idCard .actions .btn:hover {
+  cursor: pointer;
+  background-color: rgb(1, 99, 197);
 }

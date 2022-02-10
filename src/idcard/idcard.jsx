@@ -23,6 +23,9 @@ const IdCard = (props) => {
             {user.city} ({user.state})
           </li>
         </ul>
+        <div className={styles.actions}>
+          <button className={styles.btn} onClick={() => console.log('Contratado')}>Contratar</button>
+        </div>
       </div>
     </div>
   );
