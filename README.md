@@ -14,14 +14,30 @@ Necesario instalar las siguientes herramientas:
   - Simple react Snippets
   - yarn-ui
 
-- **Node (v16.13.2)**: Nos decargamos el `tar.xz de la web`
+- **Node (v16.13.2)**: Ejecutamos lo siguientes comandos.
+
+  ```
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+  nvm --version
+  nvm ls
+  nvm install 16.14.0
+  nvm alias default 16.14.0
+  nodejs -v && npm -v
+  npm install -g yarn
+  yarn -v
+  yarn add global create-react-app
+  yarn create react-app test
+  ``` 
+
+
+  <del>Nos decargamos el `tar.xz de la web`
 
   ```
   tar xf node-v16.14.0-linux-x64.tar.xz
   ```
 
   En estaguía se explica paso a paso como copiar los bianrios a su lugar correspondiente https://github.com/nodejs/help/wiki/Installation
-  Si lo tenemos instalado y hay problemas con las versiones, en este [tutorial](https://medium.com/@martinmuelas/usando-node-js-con-nvm-516062f4dcdb) podemos ver como manejar el `nvm`. Es una aplicación para gestionar versiones de node.
+  Si lo tenemos instalado y hay problemas con las versiones, en este [tutorial](https://medium.com/@martinmuelas/usando-node-js-con-nvm-516062f4dcdb) podemos ver como manejar el `nvm`. Es una aplicación para gestionar versiones de node.</del>
 
 - **NPM (v8.4.1)**: La instalación de node incluye este gestor de paquetes. Si queremos tener otra versión distinta escribamos `npm install npm@latest -g`
 
