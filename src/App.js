@@ -54,7 +54,17 @@ function App() {
       <div className="userList">
         <Routes>
           <Route exact path="/" element={userListTpl} />
-          <Route exact path="/add" element={<AddEmployee />} />
+          <Route
+            exact
+            path="/add"
+            element={
+              <AddEmployee
+                onClickCrear={(user) => {
+                  console.log(user);
+                }}
+              />
+            }
+          />
         </Routes>
       </div>
     </Router>

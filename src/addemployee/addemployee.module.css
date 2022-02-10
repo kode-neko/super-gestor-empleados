@@ -40,6 +40,8 @@
   border-bottom: 1px solid rgb(0, 16, 34);
   background-color: rgb(249, 252, 255);
   box-sizing: border-box;
+  font-size: 20px;
+  color: royalblue;
 
   /*transition: border-bottom 0.3s;*/
 }
