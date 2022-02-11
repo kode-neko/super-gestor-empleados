@@ -1,3 +1,5 @@
+[<< Volver](https://github.com/kode-neko/super-gestor-empleados)
+
 ## 1. Mi Primer Componente
 
 Vamos a comenzar con un pequeño ejercicio. Lo haremos de 2 formas, una con "vanila JavaScript" y otra con "React".  Primero crea una carpeta con estos ficheros y estructura:
@@ -81,7 +83,7 @@ Aunque seas disciplinado en el nombrado y organización de ficheros, carpetas y 
 
 Es una librería que nos ayuda a solventar los problemas comentados. Facilita la creación de código JavaScript o código frontal. existen otars tecnologías como Angular o Vue.js. 
 
-```react
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -196,3 +198,6 @@ Nos mostrará una página bonita con el logo de React dando vueltas.
 ⭐ **Webpack**
 
 > Los proyectos de create-react-app usan por debajo Webpack. Ésta herramienta sirve para automatizar la construcción de proyectos javascript. Es una herramienta bastante compleja de utilizar. Podemos nosotros mismos con ella crear nuestra propia construcción con React. Pero sinceramente, hacen falta sudor y lagrimas. 
+
+
+[<< Volver](https://github.com/kode-neko/super-gestor-empleados)
