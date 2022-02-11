@@ -15,7 +15,7 @@ Vamos a comenzar con un pequeño ejercicio. Lo haremos de 2 formas, una con "van
  ┣ 🖼️ man.png
 ```
 
-En ambas formas obtendremos la siguiente página.
+En ambas formas obtendremos el siguiente componente.
 
 <img src="src/id-card.png" alt="Ejemplo de nuestro primer componente">
 
@@ -150,8 +150,12 @@ Es una librería que nos ayuda a solventar los problemas comentados. Facilita la
 Hemos tenido que importar 3 dependencias
 
 - **React**: Con React desarrollamos los componentes
+
 - **ReactDOM**: Permite a estos componentes incluirse en el DOM
+
 - **Babel**: Babel es un traspialdor, coge el código JS y lo reescribe. Su principal objetivo es hacerlo operativo entre distintas versiones de JS. Por ejemplo, quieres usar promesas pero el navegador es tan antiguo que no sabe lo que son. Babel reescribe las promesas para que las entienda. En este caso lo usa para traspilar JSX. Los creadores de React lo consideran como una extensión de JavaScript. Gracias a JSX hemos podido en la función CardId devolver codigo HTML sin incluirlo como una cadena de texto.
+
+  
 
 A lo largo del curso iras interiorizando todo esto mejor. Haremos un proyecto que consistira en una pequeña web para gestionar empelados 🖥️
 
@@ -202,5 +206,7 @@ Nos mostrará una página bonita con el logo de React dando vueltas.
 ⭐ **Webpack**
 
 > Los proyectos de create-react-app usan por debajo Webpack. Ésta herramienta sirve para automatizar la construcción de proyectos javascript. Es una herramienta bastante compleja de utilizar. Podemos nosotros mismos con ella crear nuestra propia construcción con React. Pero sinceramente, hacen falta sudor y lagrimas. 
+
+
 
 [<< Volver](https://github.com/kode-neko/super-gestor-empleados)
