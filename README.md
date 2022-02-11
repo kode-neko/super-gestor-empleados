@@ -5,5 +5,5 @@
 
 # Índice
 
-- [Setup Inicial](docs/setup)
+- [Setup Inicial](docs/setup.m)
 - [Mi Primer Componente 😃](docs/mi-primer-componente.md)
