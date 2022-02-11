@@ -1,6 +1,6 @@
 [<< Volver](https://github.com/kode-neko/super-gestor-empleados)
 
-## 1. Mi Primer Componente
+# 1. Mi Primer Componente
 
 Vamos a comenzar con un pequeño ejercicio. Lo haremos de 2 formas, una con "vanila JavaScript" y otra con "React".  Primero crea una carpeta con estos ficheros y estructura:
 
@@ -15,8 +15,12 @@ Vamos a comenzar con un pequeño ejercicio. Lo haremos de 2 formas, una con "van
  ┣ 🖼️ man.png
 ```
 
+En ambas formas obtendremos la siguiente página.
 
-### Vanila JS
+<img src="src/id-card.png" alt="Ejemplo de nuestro primer componente">
+
+
+## 1.1. Vanila JS
 
 ¿Qué significa **Vanila JavaScript**? Utilizar JS sin la ayuda de una librería o framework para manejar los elementos del DOM. Solo valernos de la API de su core sin utilizar los "Web Components" ¿Qué son? no nos compete ahora explicarlo. Al final de los apuntes profundizaremos en ello 😉
 
@@ -79,7 +83,7 @@ Aunque seas disciplinado en el nombrado y organización de ficheros, carpetas y 
 
 
 
-### React
+## 1.2. React
 
 Es una librería que nos ayuda a solventar los problemas comentados. Facilita la creación de código JavaScript o código frontal. existen otars tecnologías como Angular o Vue.js. 
 
@@ -153,7 +157,7 @@ A lo largo del curso iras interiorizando todo esto mejor. Haremos un proyecto qu
 
 
 
-## 2. Yarn
+## 1.3. Yarn
 
 Para las prácticas en esta ocasión vamos a usar Yarn. Si conoces Npm te adelanto que es prácticamente lo mismo.
 
@@ -176,7 +180,7 @@ Para instalarlo hacemos `npm install --global yarn`
 
 
 
-## 3. create-react-app
+## 1.4. create-react-app
 
 Para facilitar la construcción de un proyecto con React tenemos la herramienta `create-react-app`.
 
@@ -186,7 +190,7 @@ yarn add global create-react-app
 
 Vamos a comenzar con el proyecto "Super Gestor de Empleados"
 
-```
+```bash
 yarn react-app super-gestor-empleados
 yarn start
 ```
@@ -198,6 +202,5 @@ Nos mostrará una página bonita con el logo de React dando vueltas.
 ⭐ **Webpack**
 
 > Los proyectos de create-react-app usan por debajo Webpack. Ésta herramienta sirve para automatizar la construcción de proyectos javascript. Es una herramienta bastante compleja de utilizar. Podemos nosotros mismos con ella crear nuestra propia construcción con React. Pero sinceramente, hacen falta sudor y lagrimas. 
-
 
 [<< Volver](https://github.com/kode-neko/super-gestor-empleados)
