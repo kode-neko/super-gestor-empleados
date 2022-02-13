@@ -4,9 +4,9 @@
 
 - [3.1. Propiedades](#21-creación)
 - [3.2. Ciclo de Vida & Estado](#32-Ciclo-de-Vida-&-Estado)
-- [3.3. Comunicación Padre e Hijo](#33-Comunicación-Padre-e-Hijo)
-- [3.4. Condicionales en JSX](#34-Condicionales-en-JSX)
-- [3.5. Listados de Componentes](#35-Listados-de-Componentes)
+- [3.3. Condicionales en JSX](#33-Condicionales-en-JSX)
+- [3.4. Listados de Componentes](#34-Listados-de-Componentes)
+- [3.5. Comunicación Padre e Hijo](#35-Comunicación-Padre-e-Hijo)
 
 ---
 
