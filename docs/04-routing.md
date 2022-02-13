@@ -2,13 +2,19 @@
 
 # 4. Routing
 
-La gracia de las webs es ir navegando entre enlaces. Volvemos a recordar que las SPA consisten en una única página donde se ponen o quitan componentes. Cuando "navegamos" a otra página en realidad quitamos de un espacio un componente e incluimos otro.
+- [4.1. Introducción](#41-Introducción)
+- [4.2. Añadir Usuario](#42-Añadir-Usuario)
+- [4.3. React Router](#43-React-Router)
 
-[img]
+---
+
+## 4.1. Introducción
+
+La gracia de las webs es ir navegando entre enlaces. Volvemos a recordar que las SPA consisten en una única página donde se ponen o quitan componentes. Cuando "navegamos" a otra página en realidad quitamos de un espacio un componente e incluimos otro.
 
 React necesita de una librería externa llamada `react-router-dom`. Pero antes de abordar esta cuestión vamos a crear la página a la que queremos navegar.
 
-## 4.1. Añadir Usuario
+## 4.2. Añadir Usuario
 
 Vamos a preparar un componente para la creación de empleados.
 
@@ -130,7 +136,7 @@ export default AddEmployee;
 }
 ```
 
-## 4.2. React Router
+## 4.3. React Router
 
 Instalamos la dependencia `react-router-dom`, perteneciente al proyecto [React Router](https://reactrouterdotcom.fly.dev/docs/en/v6).
 
@@ -202,6 +208,9 @@ export default App;
 **mainbar.jsx**
 
 ```jsx
+import styles from "./mainbar.module.css";
+import { Link } from "react-router-dom";
+
 const MainBar = ({ total, contratado }) => {
   return (
     <div className={styles.mainBar}>
@@ -217,11 +226,16 @@ const MainBar = ({ total, contratado }) => {
     </div>
   );
 };
+
+export default MainBar;
 ```
 
 **addemployee.jsx**
 
 ```jsx
+import styles from "./addemployee.module.css";
+import { useNavigate } from "react-router-dom";
+
 const AddEmployee = () => {
   const navigate = useNavigate();
   ...
@@ -308,5 +322,7 @@ Ya podemos enrutar a la página de usuarios 🎉
 > - Código postal
 > - Edad
 > - Género
+>
+> Primero preocupate en navegar a la página aunque no pases información.
 
 [<< Volver](https://github.com/kode-neko/super-gestor-empleados)
