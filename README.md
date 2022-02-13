@@ -6,7 +6,7 @@
 # Índice
 
 - [Setup Inicial](docs/00-setup-inicial.md)
-- [1. Mi Primer Componente](docs/mi-primer-componente01-mi-primer-componente.md)
+- [1. Mi Primer Componente](docs/mi-primer-componente.md)
 - [2. Nuevo proyecto](docs/02-nuevo-proyecto.md)
 - [3. Propiedades y Estado](docs/03-props-state.md)
 - [4. Enrutado](docs/04-routing.md)
