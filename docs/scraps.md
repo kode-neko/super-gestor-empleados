@@ -16,13 +16,8 @@ Manipular el contexto y referencias de componentes
 
 
 
+arbol de dependencias
 
+tumbar procesos
 
-Apuntes texto
-
-Añadir Código
-
-Añadir Emojis
-
-Reviar código
-
+porque se renderiza 2 veces
