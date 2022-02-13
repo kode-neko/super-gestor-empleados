@@ -41,15 +41,27 @@ function App() {
 
 ```jsx
 const IdCard = (props) => {
-  const {user} = props;
+  const { user } = props;
   return (
-    <div>
-      <div>
-        <img src={user.avatar} alt="user avatar"/>
+    <div className={styles.idCard}>
+      <img className={styles.avatar} src={user.avatar} alt="user avatar" />
+      <div className={styles.info}>
+        <h3 className={styles.name}>
+          {user.name} {user.surname}
+        </h3>
         <ul>
-            <li>{user.name} {user.surname}</li>
-            <li>{user.city}</li>
-            <li>{user.state}</li>
+          <li className={styles.location}>
+            <img className={styles.icon} src="mail.png" alt="mail" />{" "}
+            {user.email}
+          </li>
+          <li className={styles.phone}>
+            <img className={styles.icon} src="phone.png" alt="phone" />{" "}
+            {user.phone}
+          </li>
+          <li className={styles.location}>
+            <img className={styles.icon} src="location.png" alt="location" />{" "}
+            {user.city} ({user.state})
+          </li>
         </ul>
       </div>
     </div>
@@ -100,21 +112,6 @@ function App() {
     </div>
   )
 }
-```
-
-
-
-**idcard.jsx**
-
-```jsx
-const IdCard = ({user}) => {
-
-  // Borrar la variable "user"
-
-  return (
-    ...
-  );
-};
 ```
 
 
@@ -226,7 +223,147 @@ export default App;
 
 
 
-## 3.3. Condicionales en JSX
+## 3.3. Comunicación Padre e Hijo
+
+No, este apartado no trata de resolución de conflictos familiares Hemos visto como App envía Información a IdCard a traves de la propiedad user. En React los componentes se comuncian en una única dirección. Sin embargo usando un pequeño hack podemos hacer que el hijo envíe información al padre.
+
+Ahora nuestra increible aplicación podra contratar o despedir al empleado. Para ello incluiremos un nuevo botón en IdCard. También modificamos el App.js para que los usuarios tengan un atributo llamado contratado.
+
+
+
+**IdCard.jsx**
+
+```jsx
+import styles from "./idcard.module.css";
+
+const IdCard = (props) => {
+  const { user } = props;
+  return (
+    <div className={styles.idCard}>
+      <img className={styles.avatar} src={user.avatar} alt="user avatar" />
+      <div className={styles.info}>
+        <h3 className={styles.name}>
+          {user.name} {user.surname}
+        </h3>
+        <ul>
+          <li className={styles.location}>
+            <img className={styles.icon} src="mail.png" alt="mail" />{" "}
+            {user.email}
+          </li>
+          <li className={styles.phone}>
+            <img className={styles.icon} src="phone.png" alt="phone" />{" "}
+            {user.phone}
+          </li>
+          <li className={styles.location}>
+            <img className={styles.icon} src="location.png" alt="location" />{" "}
+            {user.city} ({user.state})
+          </li>
+        </ul>
+        <div className={styles.actions}>
+          <button
+            className={styles.btn}
+          >
+            {user.contratado ? "Despedir" : "Contratar"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default IdCard;
+```
+
+
+
+**App.js**
+
+```jsx
+function App() {
+  ...
+
+  useEffect(() => {
+    fetch("https://randomuser.me/api/")
+    .then((data) => data.json())
+    .then((json) => {
+      const user = json.results[0];
+      setUser({
+        avatar: user.picture.medium,
+        name: user.name.first,
+        surname: user.name.last,
+        city: user.location.city,
+        state: user.location.state,
+        contratado: false;
+      });
+    });
+  }, []);
+
+  ...
+}
+```
+
+
+
+[img]
+
+
+
+La idea es que al apretar el botón, indiquemos a App que el empleado ha sido contratado o no. Para ello creamos una propiedad llamada onClickContratado al que pasamos un callBack o función.
+
+
+
+**IdCard.jsx**
+
+```jsx
+const IdCard = (props) => {
+  const { user, onClickContratado } = props;
+  return (
+    <div className={styles.idCard}>
+      ...
+          <button
+            className={styles.btn}
+            onClick={() => onClickContratado()}
+          >
+            {user.contratado ? "Despedir" : "Contratar"}
+          </button>
+	  ...
+    </div>
+  );
+};
+```
+
+
+
+**App.js**
+
+```jsx
+function App() {
+  ...
+
+  return (
+    <div className="App">
+       <IdCard
+          user={user}
+          onClickContratado={() => {
+            setUser({...user, contratado: !user.contratado});
+          }}
+       />
+    </div>
+  )
+}
+```
+
+
+
+Hacemos click en botón. En ese momento ejecuta la funcion onClickContratado(). Pero resulta que se ejecuta en el componente padre.
+
+
+
+[video]
+
+
+
+## 3.4. Condicionales en JSX
 
 Como somos tan profesionales nos hemos dado cuenta de otro problema. Durante un segundo vemos la `IdCard` sin información. Vamos a poner un condicional en el `return`. Si la información del usuario está vacía que muestre un spinner ♻️ sino la `IdCard` 👤
 
@@ -237,7 +374,10 @@ Como somos tan profesionales nos hemos dado cuenta de otro problema. Durante un 
 ```jsx
 return user ? (
   <div className="App">
-      <IdCard user={user} />
+      <IdCard 
+          user={user} 
+          onClickContratado={...}
+      />
   </div>
 ) : <img src="spinner.gif" alt="loading info" />;
 ```
@@ -261,7 +401,7 @@ const ToggleBtn = () => {
 
 
 
-## 3.4. Listados de Componentes
+## 3.5. Listados de Componentes
 
 Solo mostramos un empleado. Pero lo interesante es mostrar varios en un listado.
 
@@ -320,7 +460,7 @@ JSX permite trabajar con código html como si estamos programando. A diferencia 
 >
 > [img]
 >
-> Para ello se proporciona el CSS y la plantilla HTML. A partir de esto hay que crear el componente y hacer que aparezca en la web.
+> Para ello se proporciona el CSS y la plantilla HTML. A partir de esto hay que crear el componente y hacer que aparezca en la web. Tienes que ingeniartelas para que se actualice el indicador de empelados contratados.
 >
 > 
 >
@@ -332,7 +472,7 @@ JSX permite trabajar con código html como si estamos programando. A diferencia 
 >  <h1 class="title">Super Gestor Empleados</h1>
 >  <div class="right">
 >      <div class="cuonter">
->          contratados 10/10
+>          contratados 0/10
 >      </div>
 >      <div class={styles.add}>
 >          Añadir Empleado

@@ -13,3 +13,16 @@ Funciones para facilitar realizar la siguienets operaciones:
 Afectar al estado del componente
 Disparar acciones en determinados momentos del ciclo de vida
 Manipular el contexto y referencias de componentes
+
+
+
+
+
+Apuntes texto
+
+Añadir Código
+
+Añadir Emojis
+
+Reviar código
+

@@ -71,7 +71,7 @@ En ambas formas obtendremos el siguiente componente.
 
 ```
 
-Visto así parece sencillo. Pero imagínate que queremos hacer una web completa, por ejemplo un blog de noticias. Necesitamos un menú, encabezado, cuerpo, pié de página, los artículos, otras páginas... La cantidad de archivos aumentaría considerablemente 😵 Y no solo eso, queremos que los distintos contenidos vayan apareciendo y desapareciendo en la misma página. Es decir, que al dar a un enlace del menú no recargue una nueva página, usar peticiones asíncronas y manipular el DOM haciendo aparecer y desaparecer "cosas". Esto son lo que se llaman **webs dinámicas** o **single page application**.
+Visto así parece sencillo. Pero imagínate que queremos hacer una web completa, por ejemplo un blog de noticias. Necesitamos un menú, encabezado, cuerpo, pié de página, los artículos, otras páginas... La cantidad de archivos aumentaría considerablemente 😵 Y no solo eso, queremos que los distintos contenidos vayan apareciendo y desapareciendo en la misma página. Es decir, que al dar a un enlace del menú no recargue una nueva página, usar peticiones asíncronas y manipular el DOM haciendo aparecer y desaparecer "cosas". Esto son lo que se llaman **webs dinámicas** o **single page application (SPP)**.
 
 La web resultante sería tan compleja que aparecen los siguientes problemas:
 
@@ -195,7 +195,7 @@ yarn add global create-react-app
 Vamos a comenzar con el proyecto "Super Gestor de Empleados"
 
 ```bash
-yarn react-app super-gestor-empleados
+yarn creact-app super-gestor-empleados
 yarn start
 ```
 

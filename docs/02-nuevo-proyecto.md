@@ -85,7 +85,17 @@ El `public/manifest.json` debe contener lo siguiente:
 
 
 
-## 2.2. Crear IdCard
+## 2.2. Insertas Recursos
+
+Añadimos a la carpeta `públic` los recursos comprimidos en este [enlace](./src/recursos.tar.gz). Son las imágenes que usaremos en el proyecto 🖼️ Si no te acuerdas de descomprimir te dejo esta chuleta 🍖
+
+```bash
+tar xzvf recursos.tar.gz
+```
+
+
+
+## 2.3. Crear IdCard
 
 ¿Te acuerdas del componente que creamos en la sesión anterior? Nos lo llevamos al nuevo proyecto.
 
@@ -180,7 +190,7 @@ Obtenemos lo siguiente.
 
 
 
-Un poco "cutre" 😅 Vamos ha añadir los estilos. Algunos `class` se usará más adelante.
+Un poco "cutre" 😅 Vamos ha añadir los estilos. Diversos `class` se usará más adelante.
 
 
 
@@ -207,14 +217,6 @@ Un poco "cutre" 😅 Vamos ha añadir los estilos. Algunos `class` se usará má
             {user.city} ({user.state})
           </li>
         </ul>
-        <div className={styles.actions}>
-          <button
-            className={styles.btn}
-            onClick={() => onClickContratado(user.email)}
-          >
-            {user.contratado ? "Despedir" : "Contratar"}
-          </button>
-        </div>
       </div>
     </div>
 ```
@@ -291,7 +293,7 @@ Un poco "cutre" 😅 Vamos ha añadir los estilos. Algunos `class` se usará má
 
 **App.css**
 
-```
+```css
 .userList {
     max-width: 992px;
     margin: 0 auto;

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const AddEmployee = ({ onClickCrear }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
+    avatar: 'man.png',
     name: "",
     surname: "",
     email: "",
@@ -80,6 +81,7 @@ const AddEmployee = ({ onClickCrear }) => {
             onClick={(e) => {
               e.preventDefault();
               onClickCrear(user);
+              navigate(-1);
             }}
           >
             Crear

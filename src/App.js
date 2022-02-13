@@ -60,7 +60,7 @@ function App() {
             element={
               <AddEmployee
                 onClickCrear={(user) => {
-                  console.log(user);
+                  setUserList([user, ...userList]);
                 }}
               />
             }
