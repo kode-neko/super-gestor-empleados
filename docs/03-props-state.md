@@ -425,7 +425,7 @@ Hacemos click en botón. En ese momento ejecuta la funcion onClickContratado(). 
 
 > Vamos a incluir la barra superior de la web. Será un componente y se llamará `MainBar`.
 >
-> [img]
+> <img src="src/03-mainbar.png">
 >
 > Para ello se proporciona el CSS y la plantilla HTML. A partir de esto hay que crear el componente y hacer que aparezca en la web. Tienes que ingeniartelas para que se actualice el indicador de empleados contratados.
 >
