@@ -398,7 +398,8 @@ function App() {
 
   return (
     <div className="App">
-       <IdCard
+       {userList.map((user) => (
+        <IdCard
           user={user}
           onClickContratado={(email) => {
             const newList = userList.map((user) =>
@@ -408,7 +409,8 @@ function App() {
             );
             setUserList(newList);
           }}
-       />
+        />
+      ))}
     </div>
   )
 }
