@@ -1,29 +1,20 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import IdCard from "./idcard";
 import MainBar from "./mainbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AddEmployee from "./addemployee";
+import { useDispatch, useSelector } from "react-redux";
+import { uploadList, fetchUserList } from "./store";
 
 function App() {
-  const [userList, setUserList] = useState([]);
+  const userList = useSelector((state) => {
+    return state.user.userList;
+  });
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("https://randomuser.me/api/?results=10")
-      .then((data) => data.json())
-      .then((json) => {
-        const userListAux = json.results.map((user) => ({
-          avatar: user.picture.large,
-          name: user.name.first,
-          surname: user.name.last,
-          email: user.email,
-          phone: user.phone,
-          city: user.location.city,
-          state: user.location.state,
-          contratado: false,
-        }));
-        setUserList(userListAux);
-      });
+    dispatch(fetchUserList());
   }, []);
 
   const userListTpl =
@@ -37,7 +28,7 @@ function App() {
                 ? { ...user, contratado: !user.contratado }
                 : user
             );
-            setUserList(newList);
+            dispatch(uploadList(newList));
           }}
         />
       ))
@@ -53,18 +44,8 @@ function App() {
       />
       <div className="userList">
         <Routes>
-          <Route exact path="/" element={userListTpl} />
-          <Route
-            exact
-            path="/add"
-            element={
-              <AddEmployee
-                onClickCrear={(user) => {
-                  setUserList([user, ...userList]);
-                }}
-              />
-            }
-          />
+          <Route path="/" element={userListTpl} />
+          <Route path="/add" element={<AddEmployee />} />
         </Routes>
       </div>
     </Router>

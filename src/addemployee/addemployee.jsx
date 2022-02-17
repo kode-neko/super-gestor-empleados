@@ -1,11 +1,14 @@
 import styles from "./addemployee.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUserToList } from "../store";
 
-const AddEmployee = ({ onClickCrear }) => {
+const AddEmployee = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    avatar: 'man.png',
+    avatar: "man.png",
     name: "",
     surname: "",
     email: "",
@@ -54,7 +57,11 @@ const AddEmployee = ({ onClickCrear }) => {
             id="phone"
             name="phone"
             value={user.phone}
-            onChange={(e) => setUser({ ...user, phone: e.target.value })}
+            onKeyDown={(e) => {
+              if (/\d/.test(e.key)) {
+                setUser({ ...user, phone: user.phone + e.key })
+              }
+            }}
           />
         </div>
         <div className={styles.field}>
@@ -80,7 +87,7 @@ const AddEmployee = ({ onClickCrear }) => {
             className={styles.crear}
             onClick={(e) => {
               e.preventDefault();
-              onClickCrear(user);
+              dispatch(addUserToList(user));
               navigate(-1);
             }}
           >

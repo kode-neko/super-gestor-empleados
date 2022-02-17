@@ -6,11 +6,11 @@ Disparar acciones en determinados momentos del ciclo de vida
 Manipular el contexto y referencias de componentes
 
 
+- npm trends
+- https://2020.stateofjs.com/en-US/technologies/front-end-frameworks/
+- arbol de dependencias
+- porque se renderiza 2 veces
 
-arbol de dependencias
-
-tumbar procesos
-
-porque se renderiza 2 veces
-
-cursos por dodne continuar
+cursos por donde continuar
+- https://reactforbeginners.com/
+- 
