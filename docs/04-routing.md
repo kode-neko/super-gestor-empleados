@@ -262,18 +262,21 @@ Vemos que hemos utilizado componentes de la librería `react-router-dom`.
 - **Route**: Si el path del navegador coincide con la propiedad path del componente, aparece en ese lugar el componente indicado en la propiedad element.
 - **Link**: No podemos usar las eqtiuetas `<a>`. Lo que hay que hacer es wrappear el texto, botón o etiqueta con <Link>. De esta forma lo preparara para que pueda enrutarse. En realidad lo que hace es wrappear ese elemento con el tag `<a>`
 - ¿Qué pasa si quiero ir a cualquier lugar del historial de navegación? sipone de un hook llamado `useNavigate`. Vemos que en la página de empleados, para vovler atrás hacemos uso de este hook. Has visto que hemos usado un evento, se hace de la misma forma que en el Vanila Javascript.
-- Existen más hooks para trabajar con las rutas
-
-  ```jsx
-  const params = useParams();
-  const queryParams = useSearchParams();
-
-  <Route path="/patata/:id/parametros?ele01=rico&ele02=frito" element={...}>
-  ```
-  - **useParams**: Para extraer el parámetro `:id`
-  - **useSearchParams**: Para extraer el parámetro `parametros?ele01=rico&ele02=frito`
 
 Ya podemos enrutar a la página de usuarios 🎉
+
+Existen más hooks para trabajar con las rutas
+
+```jsx
+const params = useParams();
+const queryParams = useSearchParams();
+
+<Route path="/patata/:id/parametros?ele01=rico&ele02=frito" element={...}>
+```
+- **useParams**: Para extraer el parámetro `:id`
+- **useSearchParams**: Para extraer el parámetro `parametros?ele01=rico&ele02=frito`
+
+
 
 ⚠️ **¡Atención!**
 
