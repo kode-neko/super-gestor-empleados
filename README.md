@@ -11,3 +11,4 @@
 - [3. Propiedades y Estado](docs/03-props-state.md)
 - [4. Enrutado](docs/04-routing.md)
 - [5. Formularios](docs/05-forms.md)
+- [6. Redux](docs/06-redux.md)
