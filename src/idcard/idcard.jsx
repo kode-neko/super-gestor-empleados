@@ -1,7 +1,10 @@
 import styles from "./idcard.module.css";
+import { useDispatch } from "react-redux";
+import { changeContratado } from "../common/redux/user";
 
-const IdCard = (props) => {
-  const { user, onClickContratado } = props;
+const IdCard = ({ user }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.idCard}>
       <img className={styles.avatar} src={user.avatar} alt="user avatar" />
@@ -26,7 +29,7 @@ const IdCard = (props) => {
         <div className={styles.actions}>
           <button
             className={styles.btn}
-            onClick={() => onClickContratado(user.email)}
+            onClick={() => dispatch(changeContratado(user.email))}
           >
             {user.contratado ? "Despedir" : "Contratar"}
           </button>

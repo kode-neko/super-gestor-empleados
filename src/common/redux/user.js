@@ -1,22 +1,5 @@
-import { createSlice, combineReducers, configureStore } from "@reduxjs/toolkit";
-
-async function getUserList() {
-  return fetch("https://randomuser.me/api/?results=10")
-    .then((data) => data.json())
-    .then((json) => {
-      const userListAux = json.results.map((user) => ({
-        avatar: user.picture.large,
-        name: user.name.first,
-        surname: user.name.last,
-        email: user.email,
-        phone: user.phone,
-        city: user.location.city,
-        state: user.location.state,
-        contratado: false,
-      }));
-      return userListAux;
-    });
-}
+import { createSlice } from "@reduxjs/toolkit";
+import { getUserList } from "../api/user";
 
 const initialState = {
   loading: false,
@@ -45,6 +28,13 @@ const userReducers = {
   addUserToList: (state, action) => {
     state.userList = [action.payload, ...state.userList];
   },
+  changeContratado: (state, action) => {
+    state.userList = state.userList.map((user) =>
+      user.email === action.payload
+        ? { ...user, contratado: !user.contratado }
+        : user
+    );
+  },
 };
 
 const userSlice = createSlice({
@@ -53,16 +43,13 @@ const userSlice = createSlice({
   reducers: userReducers,
 });
 
-const rootReducer = combineReducers({
-  user: userSlice.reducer,
-});
-
 const {
   getUserListStart,
   getUserSuccess,
   getUserFail,
   uploadList,
   addUserToList,
+  changeContratado,
 } = userSlice.actions;
 
 const fetchUserList = () => async (dispatch) => {
@@ -75,16 +62,13 @@ const fetchUserList = () => async (dispatch) => {
   }
 };
 
-const store = configureStore({
-  reducer: rootReducer,
-});
-
 export {
+  userSlice,
   getUserListStart,
   getUserSuccess,
   getUserFail,
   uploadList,
   fetchUserList,
   addUserToList,
-  store,
+  changeContratado,
 };
