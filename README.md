@@ -5,6 +5,12 @@
 
 ## Ramas
 
+```bash
+git branch -r
+git fetch origin/[rama_remota]
+git checkout [rama]
+```
+
 - **main**: Proyecto sin usar Redux. Toda la comunicación es de padre a hijo.
 - **redux-actual**: Proyecto con Redux usando las herramientas `@reduxjs/toolkit`. Esta es la forma que recomiendan en la web oficial.
 - **redux-tradicional**: Proyecto con Redux. Así es como se hacía antes.
@@ -12,12 +18,6 @@
 - **docs**: Donde se realizarán los cambios de la documentación. Así no se mezclan commits de documentación con el desarrollo.
 
 ## Índice
-
-```bash
-git branch -r
-git fetch origin/[rama_remota]
-git checkout [rama]
-```
 
 - [Setup Inicial](docs/00-setup-inicial.md)
 - [1. Mi Primer Componente](docs/01-mi-primer-componente.md)
