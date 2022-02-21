@@ -1,19 +1,17 @@
-# Redux
+# 6. Redux
 
-## Almacén Central
+## 6.1. Almacén Central
 
 A medida que crece nuestra aplicación de React, el arbol de componentes se vuelve más complejo. No solo por la cantidad de nodos, sino por su profundidad. La comunciación entre componente padre e hijo es fácil ¿Qué ocurre cuando hay que comunicarse con un tataranieto? ¿O un primo lejano?
-
-[img]
 
 Para solventar este problema surje el cocnepto de "almacén central"
 
 **Almacén**
-Zona donde se guarda información. Esta es accesible y modificable en cualquier parte de una aplicación.
+> Zona donde se guarda información. Esta es accesible y modificable en cualquier parte de una aplicación.
+> 
+> Para implementar este almacén usaremos una tecnología llamada Redux. Puede trabajarse con Vanila JS o con React. Sin embargo, está pensado para usarse con esta librería.
 
-Para implementar este almacén usaremos una tecnología llamada Redux. Puede trabajarse con Vanila JS o con React. Sin embargo, está pensado para usarse con esta librería.
-
-## Funcionamiento Redux
+## 6.2. Funcionamiento Redux
 
 Cada componente puede hacer 2 operaciones con el almacén central
 
@@ -27,7 +25,7 @@ A su vez el almacén central tiene sus siguientes funciones
 
 [img]
 
-## Implementación
+## 6.3. Implementación
 
 Explicaremos 2 formas de hacerlo, resulta que con el paso del tiempo han surgido librerías que facilitan su integración con React.
 
@@ -49,12 +47,13 @@ const App = () => {
     </>
   );
 };
+
+export default App;
 ```
 
 **todo-list.jsx**
 
 ```jsx
-
 const TodoList = () => {
 
     return (
@@ -65,13 +64,15 @@ const TodoList = () => {
             })}
         </div>
     );
-}
+};
+
+export default TodoList;
 ```
 
-**todo-form.jsx**
+**todo-add.jsx**
 
 ```jsx
-const TodoForm = () => {
+const TodoAdd = () => {
   return (
     <form>
       <div>
@@ -88,6 +89,8 @@ const TodoForm = () => {
     </form>
   );
 };
+
+export default TodoAdd;
 ```
 
 Este código daría errores de compilación. El resto de la lógica lo creamos con Redux.
@@ -97,12 +100,12 @@ Este código daría errores de compilación. El resto de la lógica lo creamos c
 Descarguemos las siguientes herramientas
 
 ```bash
-yarn add redux react-redux
+yarn add redux react-redux @reduxjs/toolkit
 ```
 
-Vamos a crear el estado inciial, los reducers y los actions
+Vamos a crear el estado inicial, los reducers y los actions
 
-store/todo.js
+**store/todo.js**
 
 ```javascript
 import { createSlice } from "@reduxjs/toolkit";
@@ -115,7 +118,7 @@ const initialState = {
 const reducers = {
   addTodo: (state, action) => {
     const todo = action.payload;
-    state = [...state.list, action.payload];
+    state.list = [todo, ...state.list];
   },
 };
 
@@ -130,7 +133,7 @@ const { addTodo } = userSlice.actions;
 export { todoSlice, addTodo };
 ```
 
-store/index.js
+**store/index.js**
 
 ```javascript
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -138,6 +141,8 @@ import { todoSlice } from "./todo";
 
 const rootReducer = combineReducers({ todo: todoSlice });
 const store = configureStore({ reducer: rootReducer });
+
+export default store;
 ```
 
 Modificamos los archivos de la aplicación
@@ -156,6 +161,8 @@ const App = () => {
     </Provider>
   );
 };
+
+export default App;
 ```
 
 **todo-list.jsx**
@@ -164,27 +171,30 @@ const App = () => {
 import { useSelector } from "react-redux";
 
 const TodoList = () => {
+  const todolist = useSelector((state) => state.todo.list);
+  return (
+    <div>
+      {todoList.map((todo) => {
+        <>
+          <div>{todo.title}</div>
+          <div>{todo.description}</div>
+        </>;
+      })}
+    </div>
+  );
+};
 
-    const todolist = useSelector(state => state.todo.list);
-    return (
-        <div>
-            {todoList.map(todo => {
-                <div>{todo.title}</div>
-                <div>{todo.description}</div>
-            })}
-        </div>
-    );
-}
+export default TodoList;
 ```
 
-**todo-form.jsx**
+**todo-add.jsx**
 
 ```jsx
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "store/todo.js";
 
-const TodoForm = () => {
+const TodoAdd = () => {
   const dispatch = useDispatch();
   const [todo, setTodo] = useState({
     title: "",
@@ -217,8 +227,151 @@ const TodoForm = () => {
     </form>
   );
 };
+
+export default TodoAdd;
 ```
 
 ### Forma Tradicional
 
-Under construction 
+En esta ocasión no instalamos `@reduxjs/toolkit`
+
+```bash
+yarn add redux react-redux
+```
+
+Creamos el estado inicial, los reducers y los actions:
+
+**store/todo.js**
+
+```javascript
+const initialState = {
+  list: [],
+};
+
+const todoReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "ADD_TODO": {
+      return { ...state, list: [...state.list, action.payload] };
+    }
+  }
+};
+
+const addTodo = (todo) => ({
+  type: "ADD_TODO",
+  payload: todo,
+});
+
+export { todoReducer, addTodo };
+```
+
+**store/index.js**
+
+```javascript
+import { combineReducers, createStore } from "redux";
+import { todoReducers } from "./todo.js";
+
+const rootReducer = combineReducers({
+  todo: todoReducers,
+});
+const store = createStore(rootReducer);
+
+export default store;
+```
+
+Modificamos los archivos de la aplicación
+
+**App.js**
+
+```jsx
+import { Provider } from "react-redux";
+import { store } from "./store";
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <TodoList />
+      <TodoAdd />
+    </Provider>
+  );
+};
+```
+
+**todo-list.jsx**
+
+```jsx
+import { connect } from "react-redux";
+
+const TodoList = ({todoList}) => {
+
+    return (
+        <div>
+            {todoList.map(todo => {
+                <div>{todo.title}</div>
+                <div>{todo.description}</div>
+            })}
+        </div>
+    );
+}
+
+const mapStateToProps = state => ({
+todoList: state.todo.list
+});
+
+const mapDispatchToProps = null
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+```
+
+**todo-add.jsx**
+
+```jsx
+import { useState } from "react";
+import { connect } from "react-redux";
+import { addTodo } from "store/todo.js";
+
+const TodoAdd = ({ addTodo }) => {
+  const [todo, setTodo] = useState({
+    title: "",
+    description: "",
+  });
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        addTodo(todo);
+      }}
+    >
+      <div>
+        <label>Title</label>
+        <input
+          value={todo.title}
+          onChange={(e) => setTodo({ ...todo, title: e.target.value })}
+        />
+      </div>
+      <div>
+        <label>Description</label>
+        <input
+          value={todo.description}
+          onChange={(e) => setTodo({ ...todo, description: e.target.value })}
+        />
+      </div>
+      <div>
+        <button type="submit">Crear</button>
+      </div>
+    </form>
+  );
+};
+
+const mapStateToProps = undefined;
+
+const mapDispatchToProps = (dispatch) => {
+  addTodo: (user) => dispatch(addTodo(user));
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoAdd);
+```
+
+### Soluciones Online
+
+- [StackBlictz Forma Actual](https://stackblitz.com/edit/react-nmrtjk?file=src/App.js)
+- [StackBlictz Forma Tradicional](https://stackblitz.com/edit/react-dkosrb?file=src/App.js)
