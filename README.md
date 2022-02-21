@@ -13,6 +13,12 @@
 
 ## Índice
 
+```bash
+git branch -r
+git fetch origin/[rama_remota]
+git checkout [rama]
+```
+
 - [Setup Inicial](docs/00-setup-inicial.md)
 - [1. Mi Primer Componente](docs/01-mi-primer-componente.md)
 - [2. Nuevo proyecto](docs/02-nuevo-proyecto.md)
