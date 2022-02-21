@@ -1,11 +1,9 @@
 import "./App.css";
 import React, { useEffect } from "react";
-import MainBar from "./mainbar";
+import { MainBar, UserList, AddEmployee } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AddEmployee from "./addemployee";
 import { useDispatch } from "react-redux";
-import UserList from "./userlist/userlist";
-import { fetchUserList } from "./common/redux/user";
+import { fetchUserList } from "./common";
 
 function App() {
   const dispatch = useDispatch();

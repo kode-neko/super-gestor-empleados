@@ -1,6 +1,6 @@
 import styles from "./idcard.module.css";
 import { useDispatch } from "react-redux";
-import { changeContratado } from "../common/redux/user";
+import { changeContratado } from "../../common/redux/user";
 
 const IdCard = ({ user }) => {
   const dispatch = useDispatch();

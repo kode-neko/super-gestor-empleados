@@ -2,7 +2,7 @@ import styles from "./addemployee.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUserToList } from "../common/redux/user";
+import { addUserToList } from "../../common/redux/user";
 
 const AddEmployee = () => {
   const dispatch = useDispatch();
