@@ -1,17 +1,13 @@
 import "./App.css";
 import React, { useEffect } from "react";
-import MainBar from "./mainbar";
+import { MainBar, UserList, AddEmployee } from "./components";
+import { fetchUserList } from "./common";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AddEmployee from "./addemployee";
-import { useDispatch } from "react-redux";
-import UserList from "./userlist/userlist";
-import { fetchUserList } from "./common/redux/user";
 
-function App() {
-  const dispatch = useDispatch();
-
+function App({ fetchUserList }) {
   useEffect(() => {
-    dispatch(fetchUserList());
+    fetchUserList();
   }, []);
 
   return (
@@ -27,4 +23,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = null;
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUserList: () => dispatch(fetchUserList()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

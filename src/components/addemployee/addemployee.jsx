@@ -1,7 +1,7 @@
 import styles from "./addemployee.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addToList } from "../common/redux/user";
+import { addToList } from "../../common/redux/user";
 import { connect } from "react-redux";
 
 const AddEmployee = ({ addUserToList }) => {

@@ -1,5 +1,5 @@
 import styles from "./idcard.module.css";
-import { changeContratado } from "../common/redux/user";
+import { changeContratado } from "../../common/redux/user";
 import { connect } from "react-redux";
 
 const IdCard = ({ user, changeContratado }) => {
