@@ -1,26 +1,50 @@
 import "./App.css";
-import React, { useEffect } from "react";
-import MainBar from "./mainbar";
+import React, { useState, useEffect } from "react";
+import { MainBar, UserList, AddEmployee } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AddEmployee from "./addemployee";
-import { useDispatch } from "react-redux";
-import UserList from "./userlist/userlist";
-import { fetchUserList } from "./common/redux/user";
+import { getUserList } from "./common/api/user";
 
 function App() {
-  const dispatch = useDispatch();
+  const [list, setList] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchUserList());
+    getUserList().then((list) => {
+      setList(list);
+    });
   }, []);
+
+  const handleCreatedUser = (user) => {
+    setList([user, ...list]);
+  };
+
+  const handleChangeContratado = (email) => {
+    const newList = list.map((user) =>
+      user.email === email ? { ...user, contratado: !user.contratado } : user
+    );
+    setList(newList);
+  };
 
   return (
     <Router>
-      <MainBar />
+      <MainBar
+        contratado={list.filter((user) => user.contratado).length}
+        total={list.length}
+      />
       <div className="userList">
         <Routes>
-          <Route path="/" element={<UserList />} />
-          <Route path="/add" element={<AddEmployee />} />
+          <Route
+            path="/"
+            element={
+              <UserList
+                list={list}
+                onChangeContratado={handleChangeContratado}
+              />
+            }
+          />
+          <Route
+            path="/add"
+            element={<AddEmployee onCreatedUser={handleCreatedUser} />}
+          />
         </Routes>
       </div>
     </Router>

@@ -1,11 +1,8 @@
 import styles from "./addemployee.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addUserToList } from "../common/redux/user";
 
-const AddEmployee = () => {
-  const dispatch = useDispatch();
+const AddEmployee = ({onCreatedUser}) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     avatar: "man.png",
@@ -87,7 +84,7 @@ const AddEmployee = () => {
             className={styles.crear}
             onClick={(e) => {
               e.preventDefault();
-              dispatch(addUserToList(user));
+              onCreatedUser(user);
               navigate(-1);
             }}
           >
