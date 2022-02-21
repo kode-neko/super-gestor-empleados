@@ -1,14 +1,18 @@
 import IdCard from "../idcard";
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 
-const UserList = () => {
-  const userList = useSelector((state) => state.user.userList);
-
-  return userList.length !== 0 ? (
-    userList.map((user) => <IdCard user={user} />)
+const UserList = ({ list }) => {
+  return list.length !== 0 ? (
+    list.map((user) => <IdCard user={user} />)
   ) : (
     <img src="spinner.gif" alt="loading info" />
   );
 };
 
-export default UserList;
+const mapStateToProps = (state) => ({
+  list: state.user.list,
+});
+
+const mapDispatchToProps = null;
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);

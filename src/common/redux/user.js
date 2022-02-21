@@ -1,74 +1,91 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { getUserList } from "../api/user";
 
 const initialState = {
   loading: false,
   error: undefined,
-  userList: [],
+  list: [],
 };
 
-const userReducers = {
-  getUserListStart: (state) => {
-    state.loading = true;
-    state.error = null;
-  },
-  getUserSuccess: (state, action) => {
-    const { userList } = action.payload;
-    state.userList = userList;
-    state.loading = false;
-    state.error = null;
-  },
-  getUserFail: (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
-  },
-  uploadList: (state, action) => {
-    state.userList = action.payload;
-  },
-  addUserToList: (state, action) => {
-    state.userList = [action.payload, ...state.userList];
-  },
-  changeContratado: (state, action) => {
-    state.userList = state.userList.map((user) =>
-      user.email === action.payload
-        ? { ...user, contratado: !user.contratado }
-        : user
-    );
-  },
+// Reducers
+const userReducers = (state = initialState, action) => {
+  let newState = {};
+  switch (action.type) {
+    case "USER_LIST_START":
+      newState = { ...state, loading: true, error: null };
+      break;
+    case "USER_LIST_SUCCESS":
+      newState = { ...state, list: action.payload, error: null };
+      break;
+    case "USER_LIST_FAIL":
+      newState = { ...state, loading: false, error: action.payload };
+      break;
+    case "UPLOAD_LIST":
+      newState = { ...state, list: action.payload };
+      break;
+    case "ADD_TO_LIST":
+      newState = { ...state, list: [action.payload, ...state.list] };
+      break;
+    case "CHANGE_CONTRATADO":
+      const newList = state.list.map((user) =>
+        user.email === action.payload
+          ? { ...user, contratado: !user.contratado }
+          : user
+      );
+      newState = { ...state, list: newList };
+      break;
+    default:
+      newState = state;
+  }
+  return newState;
 };
 
-const userSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: userReducers,
+// Actions
+const userListStart = () => ({
+  type: "USER_LIST_START",
 });
 
-const {
-  getUserListStart,
-  getUserSuccess,
-  getUserFail,
-  uploadList,
-  addUserToList,
-  changeContratado,
-} = userSlice.actions;
+const userListSuccess = (list) => ({
+  type: "USER_LIST_SUCCESS",
+  payload: list,
+});
+
+const userListFail = (error) => ({
+  type: "USER_LIST_FAIL",
+  payload: error,
+});
+
+const uploadList = (list) => ({
+  type: "UPLOAD_LIST",
+  payload: list,
+});
+
+const addToList = (user) => ({
+  type: "ADD_TO_LIST",
+  payload: user,
+});
+
+const changeContratado = (email) => ({
+  type: "CHANGE_CONTRATADO",
+  payload: email,
+});
 
 const fetchUserList = () => async (dispatch) => {
   try {
-    dispatch(getUserListStart());
-    const userList = await getUserList();
-    dispatch(getUserSuccess({ userList }));
+    dispatch(userListStart());
+    const list = await getUserList();
+    dispatch(userListSuccess(list));
   } catch (err) {
-    dispatch(getUserFail());
+    dispatch(userListFail(err));
   }
 };
 
 export {
-  userSlice,
-  getUserListStart,
-  getUserSuccess,
-  getUserFail,
+  userReducers,
+  userListStart,
+  userListSuccess,
+  userListFail,
   uploadList,
-  fetchUserList,
-  addUserToList,
+  addToList,
   changeContratado,
+  fetchUserList,
 };

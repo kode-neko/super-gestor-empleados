@@ -1,11 +1,10 @@
 import styles from "./addemployee.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addUserToList } from "../common/redux/user";
+import { addToList } from "../common/redux/user";
+import { connect } from "react-redux";
 
-const AddEmployee = () => {
-  const dispatch = useDispatch();
+const AddEmployee = ({ addUserToList }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     avatar: "man.png",
@@ -59,7 +58,7 @@ const AddEmployee = () => {
             value={user.phone}
             onKeyDown={(e) => {
               if (/\d/.test(e.key)) {
-                setUser({ ...user, phone: user.phone + e.key })
+                setUser({ ...user, phone: user.phone + e.key });
               }
             }}
           />
@@ -87,7 +86,7 @@ const AddEmployee = () => {
             className={styles.crear}
             onClick={(e) => {
               e.preventDefault();
-              dispatch(addUserToList(user));
+              addUserToList(user);
               navigate(-1);
             }}
           >
@@ -99,4 +98,10 @@ const AddEmployee = () => {
   );
 };
 
-export default AddEmployee;
+const mapStateToProps = null;
+
+const mapDispatchToProps = (dispatch) => ({
+  addUserToList: (user) => dispatch(addToList(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddEmployee);
