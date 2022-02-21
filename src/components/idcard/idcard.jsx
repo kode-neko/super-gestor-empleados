@@ -1,8 +1,8 @@
 import styles from "./idcard.module.css";
 
-const IdCard = ({ user, onChangeContratado }) => {
+const IdCard = ({ user, onChangeContratado, onClickUser }) => {
   return (
-    <div className={styles.idCard}>
+    <div className={styles.idCard} onClick={() => onClickUser(user)}>
       <img className={styles.avatar} src={user.avatar} alt="user avatar" />
       <div className={styles.info}>
         <h3 className={styles.name}>

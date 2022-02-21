@@ -38,6 +38,11 @@ function App() {
               <UserList
                 list={list}
                 onChangeContratado={handleChangeContratado}
+                onClickUser={(user) =>
+                  console.log(
+                    "Tal vez necesitemos un useState para guardar el usuario seleccionado..."
+                  )
+                }
               />
             }
           />
@@ -45,6 +50,7 @@ function App() {
             path="/add"
             element={<AddEmployee onCreatedUser={handleCreatedUser} />}
           />
+          {/* Nueva ruta para la enrutar a UserInfo. No te olvides pasar el usuario */}
         </Routes>
       </div>
     </Router>
